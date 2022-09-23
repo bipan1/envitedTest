@@ -204,3 +204,13 @@ label {
 .verticalLine {
   border-right: 2px solid gray;
 }
+
+.placeholderImage {
+  height : 300px;
+  width: 300px;
+  margin-left: 20px;
+}
+
+.placeholderImage:hover{
+  box-shadow: 0 0 6px 6px lightgoldenrodyellow;
+}

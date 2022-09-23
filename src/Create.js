@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import DatePicker from "react-datepicker";
 import { useNavigate } from "react-router-dom";
+import logo from "./Image.png";
 
 const Create = () => {
   const [image, setImage] = useState(null);
@@ -10,8 +11,8 @@ const Create = () => {
   const [location, setLocation] = useState('');
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
+  let inputRef;
 
-  console.log(image)
 
   const handleImageChange = (event) => {
     setImage(URL.createObjectURL(event.target.files[0]))
@@ -48,15 +49,18 @@ const Create = () => {
               <DatePicker className="form-control mb-2" selected={startDate} onSelect={(date) => setStartDate(date)}/>
               <label>End Date</label>
               <DatePicker className="form-control mb-2" selected={endDate} onSelect={(date) => setEndDate(date)}/>
-              <label>Event Photo</label>
-              <input type="file" name="eventPhoto" onChange={handleImageChange} className="form-control" />
+
+              {/* <label>Event Photo</label> */}
+              <input ref={refParam => inputRef = refParam} style={{display : "none"}} type="file" name="eventPhoto" onChange={handleImageChange} className="form-control" />
+
               <div style={{marginTop : "20px"}} className="col text-center">
                 <button onClick={() => navigate("/event")} style={{width: "300px"}} className=" btn btn-primary" >Next</button>
               </div>
             </div>
           </div>
             <div className="col-6">
-              <h2 className="headerTitle">Envited</h2>
+              <h2 className="headerTitle">Upload you Event Photo</h2>
+              <img onClick={() => inputRef.click()} src={image ? image : logo} alt="Placeholder" className="placeholderImage"/>
             </div>
         </div>
 
